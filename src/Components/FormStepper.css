@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import-normalize;
+
+.form-stepper-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .step-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Default background color */
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .step-number-selected {
+    /*background-color: #ffc107; /* Change to the color you want for the selected step */
+    color: #fff;
+    @apply bg-pmmGold;
+  }
+  
+  .step-line {
+    height: 2px;
+    flex-grow: 1;
+    background-color: #e0e0e0;
+    margin: 0 10px;
+  }
+  
+  .step-line-completed {
+    @apply bg-pmmGold; /* Change to the color you want for the completed step */
+    
+  }
+  
+  .checkmark {
+    font-size: 24px;
+  }
+  

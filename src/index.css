@@ -1,0 +1,580 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import-normalize;
+
+body{
+  @apply bg-white;
+}
+
+html, body {
+  height: 100%;
+  /*overflow: hidden;*/
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s ease;
+}
+
+
+
+.main {
+  @apply w-full h-full md:w-3/4 mx-auto px-4 py-8 bg-white rounded-lg;
+}
+
+.main-content {
+  @apply flex flex-col justify-between h-full;
+}
+
+.Navbar{
+  width: 13rem;
+  height: 5rem;
+  @apply flex justify-center m-2 bg-pmm-logo bg-logo bg-center bg-no-repeat;
+}
+
+.container {
+  @apply text-center;
+}
+
+.display-content {
+  @apply overflow-auto flex-1; /* Allow scrolling if content overflows */
+}
+
+.fixed-button {
+  @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 p-4  z-50;
+  min-width: 150px; /* Minimum width to ensure content is not cut off */
+  padding: 10px 20px; /* Adequate padding for button content */
+  text-align: center;
+  white-space: nowrap; /* Prevent text from wrapping */
+  max-width: 500px; /* Optional: limit the maximum width */
+}
+
+.FormContainer{
+  @apply flex justify-around mx-10 p-4 items-center;
+}
+
+.DisplayContainer{
+  @apply relative flex flex-col items-center text-pmmGreen;
+}
+
+.formNumber{
+  @apply rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-6 w-6 flex items-center justify-center ;
+}
+
+.formDesc{
+  @apply absolute top-0 text-center mt-16 w-32 text-xs font-normal uppercase;
+}
+
+.formLine{
+  @apply flex-auto border-t-2 transition duration-500 ease-in-out;
+}
+
+.form-c{
+  @apply flex flex-col;
+}
+
+.form-box{
+  @apply w-full mx-2 flex-1;
+}
+
+.form-question{
+  @apply font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase
+}
+
+.form-input{
+  @apply bg-white rounded-lg my-2 p-1 flex flex-col items-center font-bold;
+}
+
+.form-select{
+  @apply border-b-2 border-pmmEvry1 text-center;
+}
+
+.StepperControlContainer{
+  @apply flex justify-around mt-2 mb-4;
+}
+
+/* Styling for the continue button */
+.continue-button {
+  @apply w-full text-center py-2 mt-6 rounded-lg bg-pmmGold text-white text-base font-semibold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 75%;
+  margin-bottom: 20px; /* Adjust this value to control the distance from the bottom */
+}
+
+/* Hover state */
+.continue-button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  @apply bg-pmmGrit
+}
+
+/* Hover state animation */
+.continue-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+.continue-button:hover::before {
+  left: 100%;
+}
+
+/* Focus state */
+.continue-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+/* Active state */
+.continue-button:active {
+  background-color: #b58e2a; /* Even darker shade */
+  transform: translateY(1px);
+}
+
+/* Ripple effect on click */
+.continue-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: scale(0);
+}
+
+.continue-button:active::after {
+  opacity: 1;
+  transform: scale(2);
+  transition: transform 0s, opacity 0s 0.3s;
+}
+
+
+.btn{
+  @apply w-full font-semibold py-0 px-0 rounded-xl bg-pmmBlue text-white uppercase cursor-pointer border-2 border-slate-300;
+}
+
+.btn-back{
+  
+  @apply font-semibold py-0 px-0 rounded-full bg-white text-white uppercase cursor-pointer  ;
+}
+
+.btn:hover{
+  @apply bg-pmmEvry1 border-slate-700 transition duration-500 ease-in-out;
+}
+
+/*
+.btn-back:hover{
+  @apply border-2 border-slate-700 transition duration-500 ease-in-out;
+}
+*/
+
+/* Container for the select buttons */
+.select-container {
+  @apply w-full grid gap-4 mt-8 grid-cols-1 sm:grid-cols-2;
+}
+/* User select buttons */
+.user-select {
+  @apply bg-pmmGold bg-opacity-60 rounded-lg text-white p-4 text-center transition-transform duration-200 ease-in-out transform hover:scale-105;
+}
+
+/* Text inside buttons */
+.user-select p {
+  @apply text-sm md:text-base lg:text-lg;
+}
+
+.user-select-list {
+  @apply rounded-md text-white p-4;
+}
+
+.border-gradient-blue {
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ff9a9e, #fad0c4);
+  border-image-slice: 1;
+}
+
+
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top:40px;
+  height: 100%;
+  /*background-color: #000;*/
+  color: #000;
+  @apply bg-white;
+}
+
+/* Adjust font size for screens smaller than 768px */
+@media (max-width: 768px) {
+  .form-container {
+    margin-top: 0px;
+  }
+}
+
+.form-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);*/
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-content p {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.recommend-course {
+  color: #f7cc55;
+}
+
+/* Adjust font size for screens smaller than 768px */
+@media (max-width: 768px) {
+  .question-text {
+    font-size: 16px;
+  }
+}
+
+/* Adjust font size for screens smaller than 480px */
+@media (max-width: 480px) {
+  .question-text {
+    font-size: 14px;
+  }
+}
+
+
+/*.button-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}*/
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+
+.option-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  /*transition: all 0.3s ease;*/
+}
+
+/* Adjust font size for screens smaller than 768px */
+@media (max-width: 768px) {
+  .option-button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* Adjust font size for screens smaller than 480px */
+@media (max-width: 480px) {
+  .option-button {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+
+.option-button:hover {
+  background-color: #444;
+}
+
+.option-button:focus {
+  outline: none;
+  /*background-color: #555;*/
+  @apply bg-pmmGrit;
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 2px solid #444;
+  background-color: #2c2c2c;
+  color: #fff;
+  font-size: 16px;
+  appearance: none; /* Remove default styling on select elements */
+}
+
+/* Adjust font size for screens smaller than 768px */
+@media (max-width: 768px) {
+  .form-input,
+  .form-select {
+    font-size: 14px;
+  }
+}
+
+/* Adjust font size for screens smaller than 480px */
+@media (max-width: 480px) {
+  .form-input,
+  .form-select {
+    font-size: 12px;
+  }
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #555;
+  outline: none;
+}
+
+/* Additional styling for select dropdown */
+.form-select {
+  background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23fff" d="M2 0L0 2h4zM2 5L0 3h4z"/></svg>') no-repeat right 10px center;
+  background-size: 10px;
+  padding-right: 30px; /* Adjust padding for dropdown arrow */
+}
+
+
+.submit-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #444;
+}
+
+.submit-button:focus {
+  outline: none;
+  background-color: #555;
+}
+
+.feeling-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  /*transition: all 0.3s ease;*/
+  width: 100%;
+}
+
+.feeling-button:hover {
+  background-color: #444;
+}
+
+.feeling-button:focus {
+  outline: none;
+  /*background-color: #555;*/
+  @apply bg-pmmGrit;
+}
+
+.importance-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  /*transition: all 0.3s ease;*/
+  width: 100%;
+}
+
+.importance-button:hover {
+  background-color: #444;
+}
+
+.importance-button:focus {
+  outline: none;
+  /*background-color: #555;*/
+  @apply bg-pmmGrit;
+}
+
+.select-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.user-select {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-select:hover {
+  background-color: #d0d0d0;
+}
+
+.user-select:focus {
+  outline: none;
+  background-color: #c0c0c0;
+}
+
+.bg-blue-200 {
+  background-color: #bfdbfe;
+}
+
+.bg-purple-200 {
+  background-color:#3680A2;
+}
+
+
+
+.form-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffff;
+  color: #333;
+}
+
+.recommendation-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.time-battery {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.card {
+  background: #333;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card li {
+  font-size: 18px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.card li span {
+  margin-right: 10px;
+}
+
+.primary-button {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.primary-button:hover {
+  background: #ffcc00;
+}
+
+
+.final-c-bg{
+  background-color: white;
+  border: none;
+  @apply bg-white;
+}
