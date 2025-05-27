@@ -102,7 +102,7 @@ const IntroForm = (props) => {
                             className="space-y-4"
                         >
                             <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-                                Welcome to the Personal Impact Survey
+                                Welcome to the Relationship Health Survey
                             </h2>
                             
                             <div className="space-y-2">
