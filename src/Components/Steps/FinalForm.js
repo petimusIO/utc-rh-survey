@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import UTCLogo from "../img/UTC-logo.png";
 
 const api = axios.create({
-  baseURL: `https://petimus-utc-survey-api.onrender.com/user`//`http://localhost:3001/user`
+  baseURL: `https://petimus-utc-survey-api.onrender.com/user` //`http://localhost:3001/user`
 });
 
 const containerVariants = {
@@ -34,20 +34,20 @@ const itemVariants = {
 };
 
 const actionPlans = {
-  dormant: [
-    "Clarify Your Mission – Write a personal mission statement.",
-    "Start Small – Choose one habit that aligns with your values and commit for 7 days.",
-    "Find a Mentor – Seek someone to guide and challenge you."
+  struggling: [
+    "Seek couples counseling or coaching for guided support.",
+    "Set one small, achievable goal this week—like a tech-free dinner.",
+    "Identify and address repeating conflict cycles—don't ignore red flags."
   ],
   growing: [
-    "Document Your Growth Plan – Set a goal in 3 areas: Personal, Relational, Professional.",
-    "Build Your Circle – Surround yourself with 2-3 growth-minded individuals.",
-    "Share Your Story – Post or journal one lesson weekly to reinforce your voice."
+    "Establish a weekly 30-minute check-in (no distractions).",
+    "Read a relationship-building book or do a couples' devotional together.",
+    "Practice active listening—repeat back what you heard before responding."
   ],
-  high: [
-    "Mentor Others – Invest weekly in someone coming behind you.",
-    "Expand Your Platform – Speak, write, or serve in a new space.",
-    "Audit & Adjust – Quarterly reflection on goals, growth, and gaps."
+  thriving: [
+    "Schedule a monthly \"vision meeting\" to talk about goals and dreams.",
+    "Take a strengths-based personality assessment together and discuss.",
+    "Serve together—shared purpose deepens emotional intimacy."
   ]
 };
 
@@ -68,8 +68,9 @@ export default function FinalForm() {
       
     // Define which fields are actual questions
     const questionFields = [
-      "purpose", "values", "guidance", "systems", "development",
-      "time_energy", "story", "speaking", "vision", "evaluation"
+      "conflict_resolution", "quality_time", "emotional_safety", "open_communication", 
+      "perspective_taking", "shared_experiences", "mutual_responsibility", "appreciation", 
+      "healthy_boundaries", "no_negative_patterns"
     ];
   
     // Only process fields that are in our whitelist
@@ -94,15 +95,15 @@ export default function FinalForm() {
     
     // Determine category based on score
   let categoryValue;
-  if (score >= 10 && score <= 24) {
-    categoryValue = "dormant";
-    setCategory("dormant");
-  } else if (score >= 25 && score <= 39) {
+  if (score >= 10 && score <= 25) {
+    categoryValue = "struggling";
+    setCategory("struggling");
+  } else if (score >= 26 && score <= 40) {
     categoryValue = "growing";
     setCategory("growing");
   } else {
-    categoryValue = "high";
-    setCategory("high");
+    categoryValue = "thriving";
+    setCategory("thriving");
   }
   
   // Send data to backend - use the directly calculated categoryValue 
@@ -110,6 +111,7 @@ export default function FinalForm() {
     try {
       const res = await api.post("/", {
         ...userData,
+        dbTable: "Relationship_Health",
         totalScore: score,
         category: categoryValue // Use the direct value, not the state
       });
@@ -139,18 +141,18 @@ export default function FinalForm() {
 
   const getCategoryName = () => {
     switch(category) {
-      case "dormant": return "Dormant Potential";
-      case "growing": return "Growing Influence";
-      case "high": return "High-Impact Leader";
+      case "struggling": return "Struggling Relationship 🚨";
+      case "growing": return "Growing Relationship 🌱";
+      case "thriving": return "Thriving Relationship 💖";
       default: return "";
     }
   };
 
   const getCategoryDescription = () => {
     switch(category) {
-      case "dormant": return "You have influence in you, but it's not activated consistently.";
-      case "growing": return "You're aware of your influence and are building momentum.";
-      case "high": return "You're leading intentionally and living with purpose.";
+      case "struggling": return "There may be communication breakdowns, unresolved hurt, or toxic patterns that need attention.";
+      case "growing": return "Your relationship has a healthy foundation but could benefit from more intentionality, especially during challenges.";
+      case "thriving": return "You and your partner are deeply connected, communicate well, and resolve conflict with maturity and grace.";
       default: return "";
     }
   };
@@ -174,7 +176,7 @@ export default function FinalForm() {
       </motion.div>
         {/* Score Section - Always visible first */}
         <motion.div variants={itemVariants} custom={0} className="text-center mb-6">
-          <h2 className="text-xl font-bold mb-2">Your Personal Impact Score</h2>
+          <h2 className="text-xl font-bold mb-2">Your Relationship Health Score</h2>
           <motion.div 
             className="text-4xl md:text-5xl font-bold text-pmmGrit mb-2"
             key={totalScore}
@@ -209,8 +211,8 @@ export default function FinalForm() {
               className="mb-3"
             >
               <div className="flex items-center mb-1">
-                <span className="text-pmmGrit mr-1.5">✨</span>
-                <h2 className="text-base font-bold">Your Action Plan</h2>
+                <span className="text-pmmGrit mr-1.5">✅</span>
+                <h2 className="text-base font-bold">Tips to Strengthen Your Relationship</h2>
               </div>
               
               <div className="bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden">
@@ -247,7 +249,7 @@ export default function FinalForm() {
               >
                 <div className="flex items-center">
                   <span className="text-pmmGrit mr-1.5">⏳</span>
-                  <h2 className="text-sm font-bold">1-Day Influence Accelerator</h2>
+                  <h2 className="text-sm font-bold">7-Day Relationship Booster</h2>
                 </div>
                 <span className="text-xs text-pmmGrit">{showBonus ? '−' : '+'}</span>
               </button>
@@ -261,32 +263,32 @@ export default function FinalForm() {
                     className="overflow-hidden"
                   >
                     <div className="text-[10px] text-gray-500 mt-1 mb-2 pl-2">
-                      A quick-start plan to boost your influence in 24 hours
+                      A quick-start plan to strengthen your relationship in one week
                     </div>
                     
                     <div className="space-y-1">
                       {/* Time blocks - more compact */}
                       <div className="bg-white border border-gray-100 p-2 rounded-lg shadow-sm">
-                        <h3 className="font-bold text-xs text-pmmGrit mb-1">Morning</h3>
+                        <h3 className="font-bold text-xs text-pmmGrit mb-1">Days 1-2</h3>
                         <ul className="space-y-1 pl-4 text-[10px] list-disc text-gray-700">
-                          <li>Reflect on your values and write down your personal mission.</li>
-                          <li>Text or call 3 people and encourage them specifically.</li>
+                          <li>Share three specific things you appreciate about your partner.</li>
+                          <li>Have a conversation without any digital distractions for 20 minutes.</li>
                         </ul>
                       </div>
                       
                       <div className="bg-white border border-gray-100 p-2 rounded-lg shadow-sm">
-                        <h3 className="font-bold text-xs text-pmmGrit mb-1">Afternoon</h3>
+                        <h3 className="font-bold text-xs text-pmmGrit mb-1">Days 3-5</h3>
                         <ul className="space-y-1 pl-4 text-[10px] list-disc text-gray-700">
-                          <li>Share a short story or lesson online (or journal it).</li>
-                          <li>Evaluate how you spend your time – cut one thing that drains your focus.</li>
+                          <li>Do something your partner enjoys, even if it's not your favorite.</li>
+                          <li>Practice the 5:1 ratio—five positive interactions for every negative one.</li>
                         </ul>
                       </div>
                       
                       <div className="bg-white border border-gray-100 p-2 rounded-lg shadow-sm">
-                        <h3 className="font-bold text-xs text-pmmGrit mb-1">Evening</h3>
+                        <h3 className="font-bold text-xs text-pmmGrit mb-1">Days 6-7</h3>
                         <ul className="space-y-1 pl-4 text-[10px] list-disc text-gray-700">
-                          <li>Schedule a growth activity for the next 7 days.</li>
-                          <li>Write 3 things you want to be known for.</li>
+                          <li>Plan something to look forward to together in the next month.</li>
+                          <li>Share one way you'd like to grow as a partner and ask for feedback.</li>
                         </ul>
                       </div>
                     </div>
@@ -307,7 +309,7 @@ export default function FinalForm() {
               className="text-center mt-4"
             >
               <div className="bg-gradient-to-r from-gray-50 to-white border border-gray-100 rounded-lg p-3 shadow-sm">
-                <p className="text-xs font-medium mb-2 text-gray-700">Ready to level up your leadership?</p>
+                <p className="text-xs font-medium mb-2 text-gray-700">Know your worth. Lead with values.</p>
                 <a 
                   href="https://learn.liveprosperous.com/pages/focus-fridays-signup-form" 
                   target="_blank" 

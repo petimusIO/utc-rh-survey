@@ -1,64 +1,63 @@
 {
     "questions":[
         {
-            "questionId" : 1,
-            "questionText": "I have a clear sense of purpose and know what I'm called to do.",
-            "fieldName": "purpose",
+            "questionId": 1,
+            "questionText": "We resolve conflicts in a respectful and constructive manner.",
+            "fieldName": "conflict_resolution",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 2,
-            "questionText": "I consistently take action aligned with my core values.",
-            "fieldName": "values",
+            "questionId": 2,
+            "questionText": "We make intentional time to connect without distractions (e.g., phones, TV, work).",
+            "fieldName": "quality_time",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 3,
-            "questionText": "People often come to me for guidance or encouragement.",
-            "fieldName": "guidance",
+            "questionId": 3,
+            "questionText": "I feel emotionally safe and supported in this relationship.",
+            "fieldName": "emotional_safety",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 4,
-            "questionText": "I have systems in place for personal growth and reflection.",
-            "fieldName": "systems",
+            "questionId": 4,
+            "questionText": "We communicate openly about our needs, expectations, and feelings.",
+            "fieldName": "open_communication",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 5,
-            "questionText": "I intentionally invest in developing others.",
-            "fieldName": "development",
+            "questionId": 5,
+            "questionText": "When disagreements happen, we seek to understand each other's perspective.",
+            "fieldName": "perspective_taking",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 6,
-            "questionText": "I manage my time and energy in alignment with my priorities.",
-            "fieldName": "time_energy",
-            "onAnswerSelected": ""
-        }
-        ,
-        {
-            "questionId" : 7,
-            "questionText": "I use my story to inspire and influence others.",
-            "fieldName": "story",
+            "questionId": 6,
+            "questionText": "We share meaningful experiences or traditions that deepen our connection.",
+            "fieldName": "shared_experiences",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 8,
-            "questionText": "I feel confident speaking about my mission and vision.",
-            "fieldName": "speaking",
+            "questionId": 7,
+            "questionText": "We both take responsibility for our mistakes and work toward solutions.",
+            "fieldName": "mutual_responsibility",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 9,
-            "questionText": "I have a written vision or plan for the next 12 months.",
-            "fieldName": "vision",
+            "questionId": 8,
+            "questionText": "I feel appreciated and valued by my partner.",
+            "fieldName": "appreciation",
             "onAnswerSelected": ""
         },
         {
-            "questionId" : 10,
-            "questionText": "I regularly evaluate and adjust how I show up in my relationships and responsibilities.",
-            "fieldName": "evaluation",
+            "questionId": 9,
+            "questionText": "We have healthy boundaries that protect our time, trust, and emotional wellbeing.",
+            "fieldName": "healthy_boundaries",
+            "onAnswerSelected": ""
+        },
+        {
+            "questionId": 10,
+            "questionText": "There are no patterns of blame, withdrawal, manipulation, or control in our relationship.",
+            "fieldName": "no_negative_patterns",
             "onAnswerSelected": ""
         }
     ]
